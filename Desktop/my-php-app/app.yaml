@@ -1,5 +1,0 @@
-runtime: php81 # Change this to php80 or php81 if you're using a different PHP version
-env: standard
-handlers:
-- url: /.*
-  script: auto
