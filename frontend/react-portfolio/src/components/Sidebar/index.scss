@@ -88,6 +88,12 @@
                 content: 'CONTACT';
             }
         }
+
+        a.projects-link {
+            &:after {
+                content: 'PROJECTS';
+            }
+        }
     }
 
     ul {
