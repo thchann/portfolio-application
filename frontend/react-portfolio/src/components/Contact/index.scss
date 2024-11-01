@@ -46,12 +46,6 @@
                 opacity: 0;
                 transition: all 0.3s ease-out;
             }
-
-            &:first-child {
-                &::after {
-                    content: 'SEND AN EMAIL';
-                }
-            }
         }
     }
 
@@ -78,4 +72,52 @@
             }
         }
     }
+
+    .text-zone {
+
+        .form-group {
+            font-family: sans-serif;
+            color: #fff;
+            margin-bottom: 1%; 
+    
+            label {
+                display: block; 
+                margin-bottom: 5px;
+                margin-left: 3%; 
+            }
+    
+            // Input field styles
+            .box-submission {
+                margin-left: 3%; 
+                padding: 3px;
+                width: 35%;
+            }
+        }
+
+        .paragraph-group { 
+            font-family: sans-serif;
+            color: #fff;
+            margin-bottom: 1%; 
+    
+            label {
+                display: block; 
+                margin-bottom: 5px;
+                margin-left: 3%; 
+            }
+    
+            
+            .box-submission {
+                margin-left: 3%; 
+                padding: 3px;
+                height: 50px;
+                width: 100%;
+            }
+        }
+
+        .submission-button {
+            margin-left: 3%;
+            margin-top: 2%;
+        }
+    }
+    
 }

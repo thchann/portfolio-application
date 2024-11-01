@@ -3,10 +3,42 @@ import Loader from 'react-loaders'
 import AnimatedLetters from '../AnimatedLetters'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faEnvelope } from '@fortawesome/free-solid-svg-icons'
+import { useState } from 'react'
 
 
 
 const Contact = () => {
+
+    const[formData, setFormData] = useState({ name:'', email:'', submission:'' });
+    const[submitMessage, setSubmitMessage] = useState('');
+
+    const handleChange = (e) => {
+        const { name, value } = e.target;
+        setFormData((prev) => ({...prev, [name]:value}));
+    };
+
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+        try {
+            const response = await fetch('http://127.0.0.1:5000/', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded',
+                },
+                body: new URLSearchParams(formData).toString(),
+            });
+
+            if (response.ok) {
+                setSubmitMessage("Your response was recieved"); // Show a success message
+                setFormData({ name: '', email: '', submission: '' }); // Clear form
+            } else {
+                setSubmitMessage('Error submitting form');
+            }
+        } catch (error) {
+            console.error('Error:', error);
+            setSubmitMessage('Error submitting form');
+        }
+    };
     
     return (
     <>
@@ -25,6 +57,47 @@ const Contact = () => {
                     a full stack developer. Feel free to reach out using the form 
                     below!
                 </p>
+                <form onSubmit={handleSubmit}>
+                    <div className="form-group">
+                        <label htmlFor="name">Name</label>
+                        <input
+                            className="box-submission"
+                            type='text'
+                            name='name'
+                            id='name'
+                            value={formData.name}
+                            onChange={handleChange}
+                            required
+                        />
+                    </div>
+                    <div className="form-group">
+                        <label htmlFor="email">Email</label>
+                        <input
+                            className="box-submission"
+                            type='email'
+                            name='email'
+                            id='email'
+                            value={formData.email}
+                            onChange={handleChange}
+                            required
+                        />
+                    </div>
+                    <div className="paragraph-group">
+                        <label htmlFor="submission">Message</label>
+                        <input
+                            className="box-submission"
+                            name='submission'
+                            id='submission'
+                            value={formData.submission}
+                            onChange={handleChange}
+                            required
+                        />
+                    </div>
+                    <button type="submit" className="submission-button">
+                        Submit <FontAwesomeIcon icon={faEnvelope}/>
+                    </button>
+                </form>
+                {submitMessage && <p>{submitMessage}</p>} {" has been recieved."}
             </div>
         </div>
         <Loader type='pacman' />
