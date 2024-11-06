@@ -1,3 +1,8 @@
+body, html {
+    overflow: hidden; 
+    width: 100%;
+}
+
 .stage-cube-cont {
     width: 50%;
     height: 100%;
@@ -6,7 +11,7 @@
     margin-left: 0;
     position: absolute;
     right: 0;
-    overflow: hidden;
+
 } 
 
 .cubespinner {
@@ -23,7 +28,7 @@
         width: 200px;
         height: 200px;
         border: 1px solid #ccc;
-        background: rgba(255,255,255,0.4);
+        background: rgba(153, 137, 137, 0.4);
         font-size: 100px;
         display: flex;
         justify-content: center;
