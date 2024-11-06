@@ -27,19 +27,22 @@ const Contact = () => {
                 },
                 body: new URLSearchParams(formData).toString(),
             });
-
+    
             if (response.ok) {
-                setSubmitMessage("Your response was recieved"); // Show a success message
-                setFormData({ name: '', email: '', submission: '' }); // Clear form
+                const data = await response.json();
+                setSubmitMessage(data.message); 
+                setFormData({ name: '', email: '', submission: '' });
             } else {
-                setSubmitMessage('Error submitting form');
+                const errorData = await response.json();
+                console.log(errorData);
+                setSubmitMessage(errorData.message || 'Error submitting form');
             }
         } catch (error) {
             console.error('Error:', error);
             setSubmitMessage('Error submitting form');
         }
     };
-    
+
     return (
     <>
         <div className='container contact-page'>
@@ -97,7 +100,7 @@ const Contact = () => {
                         Submit <FontAwesomeIcon icon={faEnvelope}/>
                     </button>
                 </form>
-                {submitMessage && <p>{submitMessage}</p>} {" has been recieved."}
+                {submitMessage && <p>{submitMessage}</p>} {""}
             </div>
         </div>
         <Loader type='pacman' />

@@ -1,8 +1,10 @@
-from flask import Flask, request
+from flask import Flask, request, jsonify
 from flask_sqlalchemy import SQLAlchemy
+from flask_cors import CORS
 import os
 
 app = Flask(__name__)
+CORS(app)
 
 BASE_DIR = os.path.abspath(os.path.dirname(__file__))
 app.config['SQLALCHEMY_DATABASE_URI'] = f'sqlite:///{os.path.join(BASE_DIR, "database.db")}'
@@ -28,7 +30,11 @@ def home():
         new_user = User(name=name, email=email, submission=submission)
         db.session.add(new_user)
         db.session.commit()
-        return f"User {name} added!"
+        
+        return jsonify({
+            'message': f"User {name} added!"
+        }), 200
+
     return "Welcome to the Flask App!"
 
 if __name__ == '__main__':
