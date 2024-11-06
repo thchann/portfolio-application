@@ -84,6 +84,7 @@ const Projects = () => {
                         </div>
                     ))}
                 </div>
+                <div class="spacer"></div>
             </div>
         </body>
     );
