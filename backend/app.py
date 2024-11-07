@@ -15,7 +15,6 @@ db = SQLAlchemy(app)
 class User(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(80), unique=False, nullable=False)
-    email = db.Column(db.String(80), unique=True, nullable=False)
     submission = db.Column(db.String(1000), unique=False, nullable=False)
 
     def __repr__(self):
@@ -25,9 +24,8 @@ class User(db.Model):
 def home():
     if request.method == 'POST':
         name = request.form.get('name')
-        email = request.form.get('email')  
         submission = request.form.get('submission')
-        new_user = User(name=name, email=email, submission=submission)
+        new_user = User(name=name, submission=submission)
         db.session.add(new_user)
         db.session.commit()
         

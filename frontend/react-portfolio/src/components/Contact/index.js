@@ -9,7 +9,7 @@ import { useState } from 'react'
 
 const Contact = () => {
 
-    const[formData, setFormData] = useState({ name:'', email:'', submission:'' });
+    const[formData, setFormData] = useState({ name:'', submission:'' });
     const[submitMessage, setSubmitMessage] = useState('');
 
     const handleChange = (e) => {
@@ -31,7 +31,7 @@ const Contact = () => {
             if (response.ok) {
                 const data = await response.json();
                 setSubmitMessage(data.message); 
-                setFormData({ name: '', email: '', submission: '' });
+                setFormData({ name: '', submission: '' });
             } else {
                 const errorData = await response.json();
                 console.log(errorData);
@@ -69,18 +69,6 @@ const Contact = () => {
                             name='name'
                             id='name'
                             value={formData.name}
-                            onChange={handleChange}
-                            required
-                        />
-                    </div>
-                    <div className="form-group">
-                        <label htmlFor="email">Email</label>
-                        <input
-                            className="box-submission"
-                            type='email'
-                            name='email'
-                            id='email'
-                            value={formData.email}
                             onChange={handleChange}
                             required
                         />
