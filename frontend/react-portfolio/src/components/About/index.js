@@ -42,6 +42,9 @@ const About = () => {
                         Now, I see myself applying that experience at companies that seek
                         math-oriented computer programmers.
                     </p>
+                    <p>
+                        In my free time, I enjoy climbing and working out.
+                    </p>
                 </div>
 
                 <div className='stage-cube-cont'>
