@@ -45,6 +45,24 @@
             animation-delay: 1.4s;
         }
     }
+
+    .image-container {
+        width: 40%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: absolute;
+        right: 40px;
+        top: 15%
+    }
+
+    .profile-image {
+        width: 100%;
+        max-width: 400px;
+        height: auto;
+        border-radius: 10px;
+        box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.2);
+    }
 }
 
 h2 {
