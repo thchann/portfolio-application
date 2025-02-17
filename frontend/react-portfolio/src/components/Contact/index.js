@@ -5,8 +5,6 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faEnvelope } from '@fortawesome/free-solid-svg-icons'
 import { useState } from 'react'
 
-
-
 const Contact = () => {
 
     const[formData, setFormData] = useState({ name:'', submission:'' });

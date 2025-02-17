@@ -94,6 +94,12 @@
                 content: 'PROJECTS';
             }
         }
+
+        a.example-link {
+            &:after {
+                content: 'EXAMPLE';
+            }
+        }
     }
 
     ul {
