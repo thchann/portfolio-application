@@ -40,8 +40,8 @@ const Sidebar = () => (
             <NavLink 
                 exact="true" 
                 activeclassname="active" 
-                className="example-link" 
-                to="/example">
+                className="canvas-link" 
+                to="/canvas">
                 <FontAwesomeIcon icon={faListCheck} color="#4d4d4e" />
             </NavLink>
         </nav>
